@@ -3,11 +3,19 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/loginScreenFragment">
-
+    app:startDestination="@id/loginCreateAccountFragment2">
     <fragment
-        android:id="@+id/loginScreenFragment"
-        android:name="com.mosfeq.selfdevelopmentapp.LoginScreenFragment"
-        android:label="login_screen_fragment"
-        tools:layout="@layout/login_screen_fragment" />
+        android:id="@+id/loginCreateAccountFragment2"
+        android:name="com.mosfeq.selfdevelopmentapp.LoginCreateAccountFragment"
+        android:label="login_create_account_fragment"
+        tools:layout="@layout/login_create_account_fragment" >
+        <action
+            android:id="@+id/action_loginCreateAccountFragment2_to_loginFragment"
+            app:destination="@id/loginFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginFragment"
+        android:name="com.mosfeq.selfdevelopmentapp.LoginFragment"
+        android:label="login_fragment"
+        tools:layout="@layout/login_fragment" />
 </navigation>
