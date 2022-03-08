@@ -33,4 +33,9 @@
             app:popUpTo="@id/loginCreateAccountFragment"
             app:popUpToInclusive="true" />
     </fragment>
+    <fragment
+        android:id="@+id/settingsFragment"
+        android:name="com.mosfeq.selfdevelopmentapp.SettingsFragment"
+        android:label="Settings"
+        tools:layout="@layout/settings_fragment" />
 </navigation>
