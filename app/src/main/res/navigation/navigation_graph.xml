@@ -26,13 +26,7 @@
         android:id="@+id/homeFragment"
         android:name="com.mosfeq.selfdevelopmentapp.HomeFragment"
         android:label="home_fragment"
-        tools:layout="@layout/home_fragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_loginCreateAccountFragment"
-            app:destination="@id/loginCreateAccountFragment"
-            app:popUpTo="@id/loginCreateAccountFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/home_fragment" />
     <fragment
         android:id="@+id/settingsFragment"
         android:name="com.mosfeq.selfdevelopmentapp.SettingsFragment"
