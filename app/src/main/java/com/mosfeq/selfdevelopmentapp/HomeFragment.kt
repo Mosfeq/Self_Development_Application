@@ -31,14 +31,17 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
     private fun addHabit(view: View){
         val index: Int = 0
+        val userText = et_enterHabit.text
 
-        val newHabit = HabitItem(
-            "Habit Name",
-            "goal: $index",
-            "reason:"
-        )
+        val newHabit = if (userText.isNotEmpty()){
+            HabitItem("$userText", "Last day:", "Reason: ")
+        } else{
+            HabitItem("Habit No Name", "Last day:", "Reason: ")
+        }
+
         habitsList.add(index, newHabit)
         adapter.notifyItemInserted(index)
+        userText.clear()
     }
 
     private fun deleteHabit(view: View){
