@@ -2,12 +2,10 @@ package com.mosfeq.selfdevelopmentapp
 
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.home_fragment.*
-import kotlinx.android.synthetic.main.login_create_account_fragment.*
 
 class HomeFragment : Fragment(R.layout.home_fragment), HabitAdapter.onItemClickListener {
 
@@ -31,7 +29,8 @@ class HomeFragment : Fragment(R.layout.home_fragment), HabitAdapter.onItemClickL
     }
 
     override fun habitClicked(position: Int) {
-        Toast.makeText(context, "Item $position clicked", Toast.LENGTH_SHORT).show()
+        val action = HomeFragmentDirections.actionHomeFragmentToHabitsSettingsFragment()
+        findNavController().navigate(action)
     }
 
     private fun addHabit(view: View){

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    tools:context=".HabitsSettingsFragment">
+
+    <TextView
+        android:id="@+id/tv_settingsHabitName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:layout_marginBottom="5dp"
+        android:text="Habit"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_settingsEnterHabit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_settingsHabitName"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:hint="Enter Habit"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_settingsLastFirstDay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_settingsEnterHabit"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:text="Last/First Day"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_settingsEnterLastFirstDay"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_settingsLastFirstDay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:hint="Enter Habit"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_settingsReason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_settingsEnterLastFirstDay"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:text="Reason"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_settingsEnterReason"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_settingsReason"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="15dp"
+        android:hint="Enter Reason"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/tv_settingsGoal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_settingsEnterReason"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:text="Goal"
+        android:textSize="40sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/et_settingsEnterGoal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_settingsGoal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:hint="Enter Goal"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/btn_settingsDone"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_settingsEnterGoal"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:padding="15dp"
+        android:text="Done" />
+
+</RelativeLayout>
