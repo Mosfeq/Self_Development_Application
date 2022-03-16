@@ -1,4 +1,4 @@
 package com.mosfeq.selfdevelopmentapp
 
-data class HabitItem(val habitName: String, val goalText: String, val reason: String) {
+data class HabitItem(var habitName: String, var goalText: String, var reason: String) {
 }

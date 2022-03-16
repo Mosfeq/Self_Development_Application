@@ -2,16 +2,17 @@ package com.mosfeq.selfdevelopmentapp
 
 import android.os.Bundle
 import android.view.View
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.home_fragment.*
 import kotlinx.android.synthetic.main.login_create_account_fragment.*
 
-class HomeFragment : Fragment(R.layout.home_fragment) {
+class HomeFragment : Fragment(R.layout.home_fragment), HabitAdapter.onItemClickListener {
 
     private val habitsList = listGenerator(20)
-    private val adapter = HabitAdapter(habitsList)
+    private val adapter = HabitAdapter(habitsList, this)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -27,6 +28,10 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         btn_deleteHabit.setOnClickListener {
             deleteHabit(view)
         }
+    }
+
+    override fun habitClicked(position: Int) {
+        Toast.makeText(context, "Item $position clicked", Toast.LENGTH_SHORT).show()
     }
 
     private fun addHabit(view: View){

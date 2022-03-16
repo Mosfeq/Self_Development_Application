@@ -7,7 +7,10 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import kotlinx.android.synthetic.main.habit_item.view.*
 
-class HabitAdapter(private val listOfHabits: List<HabitItem>) : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
+class HabitAdapter(
+    private val listOfHabits: List<HabitItem>,
+    private val clickListener: onItemClickListener
+    ) : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
         val objectView = LayoutInflater.from(parent.context).
@@ -28,10 +31,25 @@ class HabitAdapter(private val listOfHabits: List<HabitItem>) : RecyclerView.Ada
         return listOfHabits.size
     }
 
-    class HabitViewHolder(objectView: View): RecyclerView.ViewHolder(objectView){
+    inner class HabitViewHolder(objectView: View): RecyclerView.ViewHolder(objectView), View.OnClickListener{
         val habitName: TextView = objectView.tv_habitName
         val goalText: TextView = objectView.tv_goalText
         val reason: TextView = objectView.tv_reason
+
+        init {
+            itemView.setOnClickListener(this)
+        }
+
+        override fun onClick(v: View?) {
+            val position: Int = absoluteAdapterPosition
+            if (position != RecyclerView.NO_POSITION){
+                clickListener.habitClicked(position)
+            }
+        }
+    }
+
+    interface onItemClickListener{
+        fun habitClicked(position: Int)
     }
 
 }
