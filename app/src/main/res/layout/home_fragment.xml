@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -9,10 +9,35 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"
-        android:padding="5dp"
-        android:clipToPadding="false"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/habit_item"/>
+        android:layout_above="@+id/btn_habitButtons"
+        android:clipToPadding="false"
+        android:padding="5dp"
+        tools:listitem="@layout/habit_item" />
 
-</LinearLayout>
+    <LinearLayout
+        android:id="@+id/btn_habitButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:clipToPadding="true"
+        android:padding="10dp">
+
+        <Button
+            android:id="@+id/btn_addHabit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Add Habit" />
+
+        <Button
+            android:id="@+id/btn_deleteHabit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Delete Habit" />
+
+    </LinearLayout>
+
+</RelativeLayout>
