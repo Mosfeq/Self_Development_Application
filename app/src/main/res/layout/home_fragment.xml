@@ -24,14 +24,13 @@
         android:clipToPadding="true"
         android:padding="10dp">
 
-        <EditText
-            android:id="@+id/et_enterHabit"
+        <Button
+            android:id="@+id/btn_Refresh"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.6"
-            android:hint="Enter Habit Name"
-            android:textSize="20sp"
-            android:textStyle="bold" />
+            android:layout_weight="1"
+            android:padding="9dp"
+            android:text="Refresh" />
 
         <Button
             android:id="@+id/btn_addHabit"

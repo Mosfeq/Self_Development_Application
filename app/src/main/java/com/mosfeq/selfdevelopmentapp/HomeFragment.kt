@@ -4,13 +4,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.home_fragment.*
 
-class HomeFragment : Fragment(R.layout.home_fragment), HabitAdapter.onItemClickListener {
+class HomeFragment : Fragment(R.layout.home_fragment) {
 
+    private val args: HomeFragmentArgs by navArgs()
     private val habitsList = listGenerator(20)
-    private val adapter = HabitAdapter(habitsList, this)
+    private val adapter = HabitAdapter(habitsList)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -20,32 +22,38 @@ class HomeFragment : Fragment(R.layout.home_fragment), HabitAdapter.onItemClickL
         recycler_view.setHasFixedSize(true)
 
         btn_addHabit.setOnClickListener {
-            addHabit(view)
+            addHabitPage(view)
         }
 
         btn_deleteHabit.setOnClickListener {
             deleteHabit(view)
         }
+
+        btn_Refresh.setOnClickListener{
+            addHabit()
+        }
     }
 
-    override fun habitClicked(position: Int) {
-        val action = HomeFragmentDirections.actionHomeFragmentToHabitsSettingsFragment()
+//    override fun habitClicked(position: Int) {
+//        val action = HomeFragmentDirections.actionHomeFragmentToHabitsSettingsFragment()
+//        findNavController().navigate(action)
+//    }
+
+    private fun addHabitPage(view: View) {
+        val action = HomeFragmentDirections.actionHomeFragmentToAddHabitsFragment()
         findNavController().navigate(action)
     }
 
-    private fun addHabit(view: View){
+    private fun addHabit(){
         val index: Int = 0
-        val userText = et_enterHabit.text
+        val habitName = args.habitName
+        val lastFirstDate = args.lastFirstDay
+        val reason = args.reason
 
-        val newHabit = if (userText.isNotEmpty()){
-            HabitItem("$userText", "Last day:", "Reason: ")
-        } else{
-            HabitItem("Habit No Name", "Last day:", "Reason: ")
-        }
+        val newHabit = HabitItem(habitName, "Last day: $lastFirstDate", "Reason: $reason")
 
         habitsList.add(index, newHabit)
         adapter.notifyItemInserted(index)
-        userText.clear()
     }
 
     private fun deleteHabit(view: View){

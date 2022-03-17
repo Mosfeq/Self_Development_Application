@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/loginCreateAccountFragment">
+    app:startDestination="@id/homeFragment">
     <fragment
         android:id="@+id/loginCreateAccountFragment"
         android:name="com.mosfeq.selfdevelopmentapp.LoginCreateAccountFragment"
@@ -17,19 +17,24 @@
         android:id="@+id/loginFragment"
         android:name="com.mosfeq.selfdevelopmentapp.LoginFragment"
         android:label="login_fragment"
-        tools:layout="@layout/login_fragment" >
-        <action
-            android:id="@+id/action_loginFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/login_fragment" />
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.mosfeq.selfdevelopmentapp.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" >
         <action
-            android:id="@+id/action_homeFragment_to_habitsSettingsFragment"
-            app:destination="@id/habitsSettingsFragment" />
+            android:id="@+id/action_homeFragment_to_addHabitsFragment"
+            app:destination="@id/addHabitsFragment" />
+        <argument
+            android:name="habitName"
+            app:argType="string" />
+        <argument
+            android:name="lastFirstDay"
+            app:argType="string" />
+        <argument
+            android:name="reason"
+            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -37,12 +42,12 @@
         android:label="Settings"
         tools:layout="@layout/settings_fragment" />
     <fragment
-        android:id="@+id/habitsSettingsFragment"
-        android:name="com.mosfeq.selfdevelopmentapp.HabitsSettingsFragment"
-        android:label="habits_settings_fragment"
-        tools:layout="@layout/habits_settings_fragment" >
+        android:id="@+id/addHabitsFragment"
+        android:name="com.mosfeq.selfdevelopmentapp.AddHabitsFragment"
+        android:label="add_habits_fragment"
+        tools:layout="@layout/add_habits_fragment" >
         <action
-            android:id="@+id/action_habitsSettingsFragment_to_homeFragment"
+            android:id="@+id/action_addHabitsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
 </navigation>

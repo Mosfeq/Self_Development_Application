@@ -11,9 +11,9 @@ class LoginFragment : Fragment(R.layout.login_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        btn_ConfirmLogin.setOnClickListener{
-            val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
-            findNavController().navigate(action)
-        }
+//        btn_ConfirmLogin.setOnClickListener{
+//            val action = LoginFragmentDirections.actionLoginFragmentToHomeFragment()
+//            findNavController().navigate(action)
+//        }
     }
 }
