@@ -1,6 +1,7 @@
 package com.mosfeq.selfdevelopmentapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -30,7 +31,16 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         }
 
         btn_Refresh.setOnClickListener{
-            addHabit()
+            val index: Int = 0
+            val habitName = args.habitName
+            val lastFirstDate = args.lastFirstDay
+            val reason = args.reason
+            Log.d("ARGS","$habitName, $lastFirstDate, $reason")
+
+            val newHabit = HabitItem(habitName, "Last day: $lastFirstDate", "Reason: $reason")
+
+            habitsList.add(index, newHabit)
+            adapter.notifyItemInserted(index)
         }
     }
 
@@ -44,17 +54,18 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         findNavController().navigate(action)
     }
 
-    private fun addHabit(){
-        val index: Int = 0
-        val habitName = args.habitName
-        val lastFirstDate = args.lastFirstDay
-        val reason = args.reason
-
-        val newHabit = HabitItem(habitName, "Last day: $lastFirstDate", "Reason: $reason")
-
-        habitsList.add(index, newHabit)
-        adapter.notifyItemInserted(index)
-    }
+//    private fun addHabit(){
+//        val index: Int = 0
+//        val habitName = args.habitName
+//        val lastFirstDate = args.lastFirstDay
+//        val reason = args.reason
+//        Log.d("ARGS","$habitName, $lastFirstDate, $reason")
+//
+//        val newHabit = HabitItem(habitName, "Last day: $lastFirstDate", "Reason: $reason")
+//
+//        habitsList.add(index, newHabit)
+//        adapter.notifyItemInserted(index)
+//    }
 
     private fun deleteHabit(view: View){
         val index: Int = 0
