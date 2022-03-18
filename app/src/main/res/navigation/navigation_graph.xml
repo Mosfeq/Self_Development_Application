@@ -26,15 +26,6 @@
         <action
             android:id="@+id/action_homeFragment_to_addHabitsFragment"
             app:destination="@id/addHabitsFragment" />
-        <argument
-            android:name="habitName"
-            app:argType="string" />
-        <argument
-            android:name="lastFirstDay"
-            app:argType="string" />
-        <argument
-            android:name="reason"
-            app:argType="string" />
     </fragment>
     <fragment
         android:id="@+id/settingsFragment"
@@ -45,9 +36,5 @@
         android:id="@+id/addHabitsFragment"
         android:name="com.mosfeq.selfdevelopmentapp.AddHabitsFragment"
         android:label="add_habits_fragment"
-        tools:layout="@layout/add_habits_fragment" >
-        <action
-            android:id="@+id/action_addHabitsFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        tools:layout="@layout/add_habits_fragment" />
 </navigation>

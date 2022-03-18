@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "20877966586",
+    "firebase_url": "https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "self-improvement-application",
+    "storage_bucket": "self-improvement-application.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20877966586:android:0c8f5b519a8e27b2739d43",
+        "android_client_info": {
+          "package_name": "com.mosfeq.selfdevelopmentapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20877966586-duj5vvt5nhfscg2t9e70o2d01h87nnno.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyABkCjyfezu8qat4KBGzwhatn8ZZFicq_0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20877966586-duj5vvt5nhfscg2t9e70o2d01h87nnno.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
