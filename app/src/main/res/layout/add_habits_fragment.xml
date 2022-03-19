@@ -47,6 +47,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
         android:hint="Enter Last/First Day"
+        android:inputType="date"
         android:textSize="20sp" />
 
     <TextView
@@ -68,6 +69,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
         android:hint="Enter Reason"
+        android:inputType="textLongMessage"
         android:textSize="20sp" />
 
     <TextView
@@ -89,6 +91,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
         android:hint="Enter Goal"
+        android:inputType="date"
         android:textSize="20sp" />
 
     <Button
@@ -100,13 +103,5 @@
         android:layout_marginTop="20dp"
         android:padding="15dp"
         android:text="Done" />
-
-    <Button
-        android:id="@+id/btn_addTest"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/btn_addDone"
-        android:layout_centerHorizontal="true"
-        android:text="Test" />
 
 </RelativeLayout>

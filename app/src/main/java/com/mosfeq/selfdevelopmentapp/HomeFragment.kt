@@ -62,7 +62,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
         val list = ArrayList<HabitItem>()
 
         for (i in 0 until sizeOfList){
-            val habitItem = HabitItem("Habit Name $i", "Last Date: ", "Reason: ")
+            val habitItem = HabitItem("Habit Name", "Goal: ", "Reason: ")
             list+= habitItem
         }
         return list
