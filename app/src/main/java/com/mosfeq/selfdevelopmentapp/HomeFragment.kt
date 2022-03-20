@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.habit_item.*
 import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment: Fragment(R.layout.home_fragment) {
@@ -27,7 +28,12 @@ class HomeFragment: Fragment(R.layout.home_fragment) {
         }
 
         btn_deleteHabit.setOnClickListener {
-            deleteHabit(view)
+            val habitToBeDeleted = et_enterHabitToDelete.text.toString()
+            if (habitToBeDeleted.isNotEmpty()){
+                deleteHabit(habitToBeDeleted)
+            }else{
+                Toast.makeText(context, "Please enter habit to be deleted", Toast.LENGTH_SHORT).show()
+            }
         }
 
         retrieveUserData()
@@ -78,10 +84,17 @@ class HomeFragment: Fragment(R.layout.home_fragment) {
 
     }
 
-    private fun deleteHabit(view: View){
-        val index: Int = 0
-        habitsList.removeAt(index)
-        adapter.notifyItemRemoved(index)
+    private fun deleteHabit(deleteHabit: String){
+        database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
+        database.child(deleteHabit).removeValue().addOnSuccessListener {
+            et_enterHabitToDelete.text.clear()
+            Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            Toast.makeText(context, "Habit not Deleted", Toast.LENGTH_SHORT).show()
+        }
+
+        habitsList.removeAt(0)
+        adapter.notifyItemRemoved(0)
     }
 
 //    private fun listGenerator(sizeOfList: Int): ArrayList<HabitItem>{

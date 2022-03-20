@@ -10,27 +10,53 @@
         android:padding="10dp">
 
         <TextView
-            android:id="@+id/tv_habitName"
+            android:id="@+id/tv_textHabitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Habit Name"
+            android:text="Habit Name: "
             android:textSize="25sp"
             android:textStyle="bold" />
 
         <TextView
-            android:id="@+id/tv_goalText"
+            android:id="@+id/tv_habitName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="150dp"
+            android:textStyle="bold"
+            android:textSize="25sp" />
+
+        <TextView
+            android:id="@+id/tv_textGoal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_habitName"
             android:text="Goal: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_goal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_habitName"
+            android:layout_marginLeft="50dp"
             android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_Textreason"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_textGoal"
+            android:text="Reason: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_reason"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/tv_goalText"
-            android:text="Reason: "
+            android:layout_below="@+id/tv_textGoal"
+            android:layout_marginLeft="80dp"
             android:textSize="20sp" />
 
     </RelativeLayout>

@@ -33,7 +33,7 @@ class HabitAdapter(
 
     class HabitViewHolder(objectView: View): RecyclerView.ViewHolder(objectView){
         val habitName: TextView = objectView.tv_habitName
-        val goalText: TextView = objectView.tv_goalText
+        val goalText: TextView = objectView.tv_goal
         val reason: TextView = objectView.tv_reason
 
 //        init {

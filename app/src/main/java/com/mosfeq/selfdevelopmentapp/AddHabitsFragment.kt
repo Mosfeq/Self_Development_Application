@@ -30,15 +30,14 @@ open class AddHabitsFragment : Fragment(R.layout.add_habits_fragment) {
 
     fun addHabit(){
         database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
-        val habitID = database.push().key
 
         val inputtedHabit = et_enterHabit.text.toString()
         val inputtedGoal = et_enterGoal.text.toString()
         val inputtedReason = et_enterReason.text.toString()
 
-        val habitItem = HabitItem(inputtedHabit, inputtedGoal, inputtedReason)
+        val habitItem = HabitItem(inputtedHabit ,inputtedGoal, inputtedReason)
 
-        database.child((habitID).toString()).setValue(habitItem).addOnCompleteListener {
+        database.child(inputtedHabit).setValue(habitItem).addOnCompleteListener {
             Toast.makeText(context, "Habit Added", Toast.LENGTH_SHORT).show()
         }.addOnFailureListener {
             Toast.makeText(context, "Habit Not Added", Toast.LENGTH_SHORT).show()
