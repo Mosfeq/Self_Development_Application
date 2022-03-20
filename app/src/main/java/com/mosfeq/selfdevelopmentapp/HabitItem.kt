@@ -1,4 +1,6 @@
 package com.mosfeq.selfdevelopmentapp
 
-data class HabitItem(var habitName: String? = null, var goal: String? = null, var reason: String? = null) {
+import java.util.*
+
+data class HabitItem(var habitName: String? = null, var goal: String? = null, var reason: String? = null, var lastDateDoingHabit: String? = null) {
 }

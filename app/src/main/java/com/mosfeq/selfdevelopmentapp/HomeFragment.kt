@@ -1,6 +1,7 @@
 package com.mosfeq.selfdevelopmentapp
 
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -9,12 +10,17 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.habit_item.*
 import kotlinx.android.synthetic.main.home_fragment.*
+import java.sql.Time
+import java.text.SimpleDateFormat
+import java.time.DateTimeException
+import java.util.*
 
-class HomeFragment: Fragment(R.layout.home_fragment) {
+class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickListener {
 
     private val habitsList = arrayListOf<HabitItem>()
-    private val adapter = HabitAdapter(habitsList)
+    private val adapter = HabitAdapter(habitsList, this)
     private lateinit var database: DatabaseReference
+    val lastDayDoingHabit = tv_lastDateDoingHabit
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,15 +50,14 @@ class HomeFragment: Fragment(R.layout.home_fragment) {
         findNavController().navigate(action)
     }
 
-    //    override fun habitClicked(position: Int) {
-//        val action = HomeFragmentDirections.actionHomeFragmentToHabitsSettingsFragment()
-//        findNavController().navigate(action)
-//    }
-
-//                val habit = it.child("habitName").value.toString()
-//                val goal = it.child("goal").value.toString()
-//                val reason = it.child("reason").value.toString()
-
+    override fun habitClicked(position: Int) {
+        val sdf = SimpleDateFormat("dd/M/yyyy")
+        val currentDate = sdf.format(Date())
+        Log.e("Date","C DATE is $currentDate")
+        val clickedHabit : HabitItem = habitsList[position]
+        clickedHabit.lastDateDoingHabit = currentDate
+        adapter.notifyItemChanged(position)
+    }
 
     private fun retrieveUserData(){
         database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
@@ -73,15 +78,11 @@ class HomeFragment: Fragment(R.layout.home_fragment) {
 
                     }
                 }
-
             }
-
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, "Habit Not Here", Toast.LENGTH_SHORT).show()
             }
-
         })
-
     }
 
     private fun deleteHabit(deleteHabit: String){

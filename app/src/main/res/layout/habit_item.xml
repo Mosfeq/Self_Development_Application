@@ -13,7 +13,7 @@
             android:id="@+id/tv_textHabitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Habit Name: "
+            android:text="Habit: "
             android:textSize="25sp"
             android:textStyle="bold" />
 
@@ -21,9 +21,9 @@
             android:id="@+id/tv_habitName"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="150dp"
-            android:textStyle="bold"
-            android:textSize="25sp" />
+            android:layout_marginLeft="70dp"
+            android:textSize="25sp"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/tv_textGoal"
@@ -43,7 +43,7 @@
             android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/tv_Textreason"
+            android:id="@+id/tv_textReason"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_textGoal"
@@ -57,6 +57,24 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_textGoal"
             android:layout_marginLeft="80dp"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/tv_textLastDateDoingHabit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_textReason"
+            android:text="Last date doing habit: "
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_lastDateDoingHabit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_textReason"
+            android:layout_marginLeft="200dp"
+            android:hint="Click to update date"
             android:textSize="20sp" />
 
     </RelativeLayout>
