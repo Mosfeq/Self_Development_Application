@@ -23,7 +23,7 @@ class HabitAdapter(
         val currentHabitItem = listOfHabits[position]
 
         holder.habitName.text = currentHabitItem.habitName
-        holder.goalText.text = currentHabitItem.goalText
+        holder.goalText.text = currentHabitItem.goal
         holder.reason.text = currentHabitItem.reason
     }
 

@@ -13,29 +13,34 @@ import kotlinx.android.synthetic.main.add_habits_fragment.*
 open class AddHabitsFragment : Fragment(R.layout.add_habits_fragment) {
 
     private lateinit var database: DatabaseReference
+    private val habitID = database.push().key
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
+
         btn_addDone.setOnClickListener {
-            val inputtedHabit = et_enterHabit.text.toString()
-            val inputtedGoal = et_enterGoal.text.toString()
-            val inputtedReason = et_enterReason.text.toString()
 
-            println("$inputtedHabit, $inputtedGoal, $inputtedReason")
-
-            database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
-            val habitItem = HabitItem(inputtedHabit, inputtedGoal, inputtedReason)
-
-            database.child(inputtedHabit).setValue(habitItem).addOnCompleteListener {
-                Toast.makeText(context, "Habit Added", Toast.LENGTH_SHORT).show()
-            }.addOnFailureListener {
-                Toast.makeText(context, "Habit Not Added", Toast.LENGTH_SHORT).show()
-            }
+            addHabit(database, habitID)
 
             val action = AddHabitsFragmentDirections.actionAddHabitsFragmentToHomeFragment()
             findNavController().navigate(action)
 
+        }
+    }
+
+    fun addHabit(database: DatabaseReference, habitID: String?){
+        val inputtedHabit = et_enterHabit.text.toString()
+        val inputtedGoal = et_enterGoal.text.toString()
+        val inputtedReason = et_enterReason.text.toString()
+
+        val habitItem = HabitItem(inputtedHabit, inputtedGoal, inputtedReason)
+
+        database.child((habitID).toString()).setValue(habitItem).addOnCompleteListener {
+            Toast.makeText(context, "Habit Added", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            Toast.makeText(context, "Habit Not Added", Toast.LENGTH_SHORT).show()
         }
     }
 }
