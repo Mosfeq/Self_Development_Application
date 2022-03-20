@@ -28,11 +28,6 @@
             app:destination="@id/addHabitsFragment" />
     </fragment>
     <fragment
-        android:id="@+id/settingsFragment"
-        android:name="com.mosfeq.selfdevelopmentapp.SettingsFragment"
-        android:label="Settings"
-        tools:layout="@layout/settings_fragment" />
-    <fragment
         android:id="@+id/addHabitsFragment"
         android:name="com.mosfeq.selfdevelopmentapp.AddHabitsFragment"
         android:label="add_habits_fragment"
@@ -41,4 +36,9 @@
             android:id="@+id/action_addHabitsFragment_to_homeFragment"
             app:destination="@id/homeFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/quotesFragment"
+        android:name="com.mosfeq.selfdevelopmentapp.QuotesFragment"
+        android:label="quotes_fragment"
+        tools:layout="@layout/quotes_fragment" />
 </navigation>

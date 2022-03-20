@@ -5,12 +5,12 @@
     android:layout_height="match_parent"
     android:gravity="center"
     android:orientation="vertical"
-    tools:context=".SettingsFragment">
+    tools:context=".QuotesFragment">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Settings"
+        android:text="Quotes"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
 </LinearLayout>
