@@ -6,23 +6,21 @@ import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.add_habits_fragment.*
+import kotlinx.android.synthetic.main.home_fragment.*
 
 open class AddHabitsFragment : Fragment(R.layout.add_habits_fragment) {
 
     private lateinit var database: DatabaseReference
-    private val habitID = database.push().key
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
-
         btn_addDone.setOnClickListener {
 
-            addHabit(database, habitID)
+            addHabit()
 
             val action = AddHabitsFragmentDirections.actionAddHabitsFragmentToHomeFragment()
             findNavController().navigate(action)
@@ -30,7 +28,10 @@ open class AddHabitsFragment : Fragment(R.layout.add_habits_fragment) {
         }
     }
 
-    fun addHabit(database: DatabaseReference, habitID: String?){
+    fun addHabit(){
+        database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
+        val habitID = database.push().key
+
         val inputtedHabit = et_enterHabit.text.toString()
         val inputtedGoal = et_enterGoal.text.toString()
         val inputtedReason = et_enterReason.text.toString()

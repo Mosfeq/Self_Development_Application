@@ -19,15 +19,6 @@
         android:label="login_fragment"
         tools:layout="@layout/login_fragment" />
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.mosfeq.selfdevelopmentapp.HomeFragment"
-        android:label="home_fragment"
-        tools:layout="@layout/home_fragment" >
-        <action
-            android:id="@+id/action_homeFragment_to_addHabitsFragment"
-            app:destination="@id/addHabitsFragment" />
-    </fragment>
-    <fragment
         android:id="@+id/addHabitsFragment"
         android:name="com.mosfeq.selfdevelopmentapp.AddHabitsFragment"
         android:label="add_habits_fragment"
@@ -41,4 +32,13 @@
         android:name="com.mosfeq.selfdevelopmentapp.QuotesFragment"
         android:label="quotes_fragment"
         tools:layout="@layout/quotes_fragment" />
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.mosfeq.selfdevelopmentapp.HomeFragment"
+        android:label="home_fragment"
+        tools:layout="@layout/home_fragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_addHabitsFragment"
+            app:destination="@id/addHabitsFragment" />
+    </fragment>
 </navigation>

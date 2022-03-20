@@ -1,17 +1,15 @@
 package com.mosfeq.selfdevelopmentapp
 
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.add_habits_fragment.*
 import kotlinx.android.synthetic.main.home_fragment.*
 
-class HomeFragment : Fragment(R.layout.home_fragment) {
+class HomeFragment: Fragment(R.layout.home_fragment) {
 
     private val habitsList = arrayListOf<HabitItem>()
     private val adapter = HabitAdapter(habitsList)
@@ -20,27 +18,32 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        recycler_view.adapter = adapter
         recycler_view.layoutManager = LinearLayoutManager(context)
         recycler_view.setHasFixedSize(true)
 
-        retrieveUserData()
-
         btn_addHabit.setOnClickListener {
-            val action = HomeFragmentDirections.actionHomeFragmentToAddHabitsFragment()
-            findNavController().navigate(action)
+            addHabitPage()
         }
 
         btn_deleteHabit.setOnClickListener {
             deleteHabit(view)
         }
+
+        retrieveUserData()
     }
 
-//    override fun habitClicked(position: Int) {
+    private fun addHabitPage(){
+        val action = HomeFragmentDirections.actionHomeFragmentToAddHabitsFragment()
+        findNavController().navigate(action)
+    }
+
+    //    override fun habitClicked(position: Int) {
 //        val action = HomeFragmentDirections.actionHomeFragmentToHabitsSettingsFragment()
 //        findNavController().navigate(action)
 //    }
 
-    //                val habit = it.child("habitName").value.toString()
+//                val habit = it.child("habitName").value.toString()
 //                val goal = it.child("goal").value.toString()
 //                val reason = it.child("reason").value.toString()
 
@@ -48,7 +51,7 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
     private fun retrieveUserData(){
         database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
 
-        database.addValueEventListener(object : ValueEventListener{
+        database.addValueEventListener(object : ValueEventListener {
 
             override fun onDataChange(snapshot: DataSnapshot) {
 
@@ -56,13 +59,13 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 
                     for (habitSnapshot in snapshot.children){
 
-                        val index: Int = 0
                         val habit = habitSnapshot.getValue(HabitItem::class.java)
-                        habitsList.add(index, habit!!)
-                        adapter.notifyItemInserted(index)
+                        if (habit != null) {
+                            habitsList.add(0, habit)
+                        }
+                        adapter.notifyItemInserted(0)
 
                     }
-                    recycler_view.adapter = adapter
                 }
 
             }
@@ -90,4 +93,5 @@ class HomeFragment : Fragment(R.layout.home_fragment) {
 //        }
 //        return list
 //    }
+
 }
