@@ -55,27 +55,39 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
         val sdf = SimpleDateFormat("dd/M/yyyy")
         val currentDate = sdf.format(Date())
         val clickedHabit : HabitItem = habitsList[position]
-        val numberOfTimesHabitClicked = clickedHabit.numberOfClicks
+        val nameOfHabit = clickedHabit.habitName
+        val numberOfHabitClicks = clickedHabit.numberOfClicks
 
-        clickedHabit.numberOfClicks = clickedHabit.numberOfClicks?.plus(1)
+        clickedHabit.numberOfClicks = clickedHabit.numberOfClicks + 1
         clickedHabit.lastDateDoingHabit = currentDate
         adapter.notifyItemChanged(position)
 
-        val habit = mapOf<String,String>(
+        val updateLastDate = mapOf<String,String>(
             "lastDayDoingHabit" to currentDate,
-            "numberOfClicks" to numberOfTimesHabitClicked.toString()
         )
 
-        clickedHabit.habitName?.let {
-            database.child(it).updateChildren(habit).addOnSuccessListener {
+        val updateNumberOfClicks = mapOf(
+            "numberOfClicks" to numberOfHabitClicks
+        )
 
-                Toast.makeText(context, "Updated date", Toast.LENGTH_SHORT).show()
+        database.child(nameOfHabit).updateChildren(updateLastDate).addOnSuccessListener {
 
-            }.addOnFailureListener {
+            Toast.makeText(context, "Updated date", Toast.LENGTH_SHORT).show()
 
-                Toast.makeText(context, "Date not updated", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
 
-            }
+            Toast.makeText(context, "Date not updated", Toast.LENGTH_SHORT).show()
+
+        }
+
+        database.child(nameOfHabit).updateChildren(updateNumberOfClicks).addOnSuccessListener {
+
+            Log.e("Clicks", "Done")
+
+        }.addOnFailureListener {
+
+            Log.e("Clicks", "Not Done")
+
         }
     }
 
