@@ -25,28 +25,28 @@
         android:layout_below="@+id/tv_addHabitName"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:hint="Enter Habit"
+        android:hint="Enter habit name"
         android:textSize="20sp" />
 
     <TextView
-        android:id="@+id/tv_addLastFirstDay"
+        android:id="@+id/tv_addLastDayHabit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/et_enterHabit"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
-        android:text="Last/First Day"
+        android:text="Last did habit"
         android:textSize="40sp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/et_enterLastFirstDay"
+        android:id="@+id/et_enterLastDayHabit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/tv_addLastFirstDay"
+        android:layout_below="@+id/tv_addLastDayHabit"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:hint="Enter Last/First Day"
+        android:hint="Format: dd/m/yyyy"
         android:inputType="date"
         android:textSize="20sp" />
 
@@ -54,7 +54,7 @@
         android:id="@+id/tv_addReason"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/et_enterLastFirstDay"
+        android:layout_below="@+id/et_enterLastDayHabit"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
         android:text="Reason"
@@ -68,7 +68,7 @@
         android:layout_below="@+id/tv_addReason"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="15dp"
-        android:hint="Enter Reason"
+        android:hint="Enter reason"
         android:inputType="textLongMessage"
         android:textSize="20sp" />
 
@@ -90,8 +90,8 @@
         android:layout_below="@+id/tv_addGoal"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="5dp"
-        android:hint="Enter Goal"
-        android:inputType="date"
+        android:hint="Enter your goal"
+        android:inputType="textLongMessage"
         android:textSize="20sp" />
 
     <Button

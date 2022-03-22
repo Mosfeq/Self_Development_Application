@@ -20,7 +20,6 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
     private val habitsList = arrayListOf<HabitItem>()
     private val adapter = HabitAdapter(habitsList, this)
     private lateinit var database: DatabaseReference
-    val lastDayDoingHabit = tv_lastDateDoingHabit
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -51,12 +50,29 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
     }
 
     override fun habitClicked(position: Int) {
+        database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
+
         val sdf = SimpleDateFormat("dd/M/yyyy")
         val currentDate = sdf.format(Date())
-        Log.e("Date","C DATE is $currentDate")
         val clickedHabit : HabitItem = habitsList[position]
         clickedHabit.lastDateDoingHabit = currentDate
         adapter.notifyItemChanged(position)
+
+        val habit = mapOf<String,String>(
+            "lastDayDoingHabit" to currentDate
+        )
+
+        clickedHabit.habitName?.let {
+            database.child(it).updateChildren(habit).addOnSuccessListener {
+
+                Toast.makeText(context, "Updated date", Toast.LENGTH_SHORT).show()
+
+            }.addOnFailureListener {
+
+                Toast.makeText(context, "Date not updated", Toast.LENGTH_SHORT).show()
+
+            }
+        }
     }
 
     private fun retrieveUserData(){
