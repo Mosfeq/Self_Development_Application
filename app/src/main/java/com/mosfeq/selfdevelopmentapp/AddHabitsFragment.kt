@@ -36,7 +36,7 @@ open class AddHabitsFragment : Fragment(R.layout.add_habits_fragment) {
         val inputtedGoal = et_enterGoal.text.toString()
         val inputtedReason = et_enterReason.text.toString()
 
-        val habitItem = HabitItem(inputtedHabit ,inputtedGoal, inputtedReason, inputtedLastDayHabit)
+        val habitItem = HabitItem(inputtedHabit ,inputtedGoal, inputtedReason, inputtedLastDayHabit, "0")
 
         database.child(inputtedHabit).setValue(habitItem).addOnCompleteListener {
             Toast.makeText(context, "Habit Added", Toast.LENGTH_SHORT).show()

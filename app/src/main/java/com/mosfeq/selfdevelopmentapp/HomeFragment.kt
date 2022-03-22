@@ -55,11 +55,15 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
         val sdf = SimpleDateFormat("dd/M/yyyy")
         val currentDate = sdf.format(Date())
         val clickedHabit : HabitItem = habitsList[position]
+        val numberOfTimesHabitClicked = clickedHabit.numberOfClicks
+
+        clickedHabit.numberOfClicks = clickedHabit.numberOfClicks?.plus(1)
         clickedHabit.lastDateDoingHabit = currentDate
         adapter.notifyItemChanged(position)
 
         val habit = mapOf<String,String>(
-            "lastDayDoingHabit" to currentDate
+            "lastDayDoingHabit" to currentDate,
+            "numberOfClicks" to numberOfTimesHabitClicked.toString()
         )
 
         clickedHabit.habitName?.let {
