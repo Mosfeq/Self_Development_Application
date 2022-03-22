@@ -40,5 +40,13 @@
         <action
             android:id="@+id/action_homeFragment_to_addHabitsFragment"
             app:destination="@id/addHabitsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_deleteHabitsFragment"
+            app:destination="@id/deleteHabitsFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/deleteHabitsFragment"
+        android:name="com.mosfeq.selfdevelopmentapp.DeleteHabitsFragment"
+        android:label="delete_habits_fragment"
+        tools:layout="@layout/delete_habits_fragment" />
 </navigation>

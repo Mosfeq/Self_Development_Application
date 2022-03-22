@@ -28,24 +28,29 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
         recycler_view.layoutManager = LinearLayoutManager(context)
         recycler_view.setHasFixedSize(true)
 
+        retrieveUserData()
+
         btn_addHabit.setOnClickListener {
             addHabitPage()
         }
 
         btn_deleteHabit.setOnClickListener {
-            val habitToBeDeleted = et_enterHabitToDelete.text.toString()
-            if (habitToBeDeleted.isNotEmpty()){
-                deleteHabit(habitToBeDeleted)
-            }else{
-                Toast.makeText(context, "Please enter habit to be deleted", Toast.LENGTH_SHORT).show()
-            }
+            deleteHabitPage()
         }
 
-        retrieveUserData()
+        btn_refresh.setOnClickListener {
+            habitsList.removeAt(0)
+            adapter.notifyItemRemoved(0)
+        }
     }
 
     private fun addHabitPage(){
         val action = HomeFragmentDirections.actionHomeFragmentToAddHabitsFragment()
+        findNavController().navigate(action)
+    }
+
+    private fun deleteHabitPage(){
+        val action = HomeFragmentDirections.actionHomeFragmentToDeleteHabitsFragment()
         findNavController().navigate(action)
     }
 
@@ -115,19 +120,6 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
                 Toast.makeText(context, "Habit Not Here", Toast.LENGTH_SHORT).show()
             }
         })
-    }
-
-    private fun deleteHabit(deleteHabit: String){
-        database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
-        database.child(deleteHabit).removeValue().addOnSuccessListener {
-            et_enterHabitToDelete.text.clear()
-            Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_SHORT).show()
-        }.addOnFailureListener {
-            Toast.makeText(context, "Habit not Deleted", Toast.LENGTH_SHORT).show()
-        }
-
-        habitsList.removeAt(0)
-        adapter.notifyItemRemoved(0)
     }
 
 //    private fun listGenerator(sizeOfList: Int): ArrayList<HabitItem>{
