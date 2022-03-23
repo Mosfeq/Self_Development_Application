@@ -19,11 +19,11 @@ class LoginAccount : Fragment(R.layout.login_account) {
         super.onViewCreated(view, savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
-        et_enterUsername.text.clear()
+        et_enterEmail.text.clear()
         et_enterPassword.text.clear()
 
         btn_confirmLogin.setOnClickListener {
-            if (et_enterUsername.text.trim().isNotEmpty() && et_enterPassword.text.trim().isNotEmpty()){
+            if (et_enterEmail.text.trim().isNotEmpty() && et_enterPassword.text.trim().isNotEmpty()){
                 signInUser()
             }else{
                 Toast.makeText(context,"Information required", Toast.LENGTH_SHORT).show()
@@ -38,11 +38,11 @@ class LoginAccount : Fragment(R.layout.login_account) {
     }
 
     private fun signInUser(){
-        auth.signInWithEmailAndPassword(et_enterUsername.text.trim().toString(), et_enterPassword.text.trim().toString())
+        auth.signInWithEmailAndPassword(et_enterEmail.text.trim().toString(), et_enterPassword.text.trim().toString())
             .addOnCompleteListener{
                     task ->
                 if(task.isSuccessful){
-                    Toast.makeText(context,"Login Successful"+task.exception,Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context,"Login Successful",Toast.LENGTH_SHORT).show()
                     val action = LoginAccountDirections.actionLoginAccountToHomeFragment()
                     findNavController().navigate(action)
                 }else{

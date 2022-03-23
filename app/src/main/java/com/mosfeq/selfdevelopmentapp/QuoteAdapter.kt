@@ -14,7 +14,6 @@ class QuoteAdapter(
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): QuoteViewHolder {
         val itemView = LayoutInflater.from(parent.context).
         inflate(R.layout.quote_item, parent, false)
-
         return QuoteViewHolder(itemView)
     }
 

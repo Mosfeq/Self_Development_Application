@@ -13,8 +13,7 @@ class HabitAdapter(
     ) : RecyclerView.Adapter<HabitAdapter.HabitViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): HabitViewHolder {
-        val objectView = LayoutInflater.from(parent.context).
-        inflate(R.layout.habit_item, parent, false)
+        val objectView = LayoutInflater.from(parent.context).inflate(R.layout.habit_item, parent, false)
 
         return HabitViewHolder(objectView)
     }

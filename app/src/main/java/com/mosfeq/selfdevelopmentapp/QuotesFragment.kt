@@ -37,8 +37,8 @@ class QuotesFragment: Fragment(R.layout.quotes_fragment) {
         adapter.notifyItemInserted(0)
 
         val quoteItem4 = QuoteItem(
-            "You cannot change your future; but, you can change your habits, and surely your habits…will change your future.",
-            "Dr. Abdul Kalam")
+            "Good habits are worth being fanatical about.",
+            "John Irving")
         quotesList+= quoteItem4
         adapter.notifyItemInserted(0)
 
@@ -55,8 +55,8 @@ class QuotesFragment: Fragment(R.layout.quotes_fragment) {
         adapter.notifyItemInserted(0)
 
         val quoteItem7 = QuoteItem(
-            "Good habits are worth being fanatical about.",
-            "John Irving")
+            "You cannot change your future; but you can change your habits, and surely your habits will change your future.",
+            "Dr. Abdul Kalam")
         quotesList+= quoteItem7
         adapter.notifyItemInserted(0)
 

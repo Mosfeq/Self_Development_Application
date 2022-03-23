@@ -18,13 +18,13 @@ class RegisterAccount : Fragment(R.layout.register_account) {
         super.onViewCreated(view, savedInstanceState)
 
         auth = FirebaseAuth.getInstance()
-        et_createUsername.text.clear()
+        et_createEmail.text.clear()
         et_createPassword.text.clear()
         et_createConfirmPassword.text.clear()
 
         btn_confirmRegister.setOnClickListener {
 
-            if(et_createUsername.text.trim().isNotEmpty() && et_createPassword.text.trim().isNotEmpty() && et_createConfirmPassword.text.trim().isNotEmpty()){
+            if(et_createEmail.text.trim().isNotEmpty() && et_createPassword.text.trim().isNotEmpty() && et_createConfirmPassword.text.trim().isNotEmpty()){
                 if(et_createPassword.text.toString() == et_createConfirmPassword.text.toString()){
                     registerUser()
                 }else{
@@ -45,7 +45,7 @@ class RegisterAccount : Fragment(R.layout.register_account) {
     }
 
     private fun registerUser(){
-        auth.createUserWithEmailAndPassword(et_createUsername.text.trim().toString(), et_createPassword.text.trim().toString())
+        auth.createUserWithEmailAndPassword(et_createEmail.text.trim().toString(), et_createPassword.text.trim().toString())
             .addOnCompleteListener{
                     task ->
                 if (task.isSuccessful){
