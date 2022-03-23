@@ -42,11 +42,11 @@
 
         <EditText
             android:id="@+id/et_enterHabitToDelete"
-            android:hint="Enter Habit To Delete"
-            android:padding="9dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.7"/>
+            android:layout_weight="0.7"
+            android:hint="Enter Habit To Delete"
+            android:padding="9dp" />
 
     </LinearLayout>
 
