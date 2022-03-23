@@ -40,13 +40,13 @@
             android:padding="9dp"
             android:text="Delete Habit" />
 
-        <Button
-            android:id="@+id/btn_refresh"
+        <EditText
+            android:id="@+id/et_enterHabitToDelete"
+            android:hint="Enter Habit To Delete"
+            android:padding="9dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1.1"
-            android:padding="9dp"
-            android:text="Refresh" />
+            android:layout_weight="0.7"/>
 
     </LinearLayout>
 

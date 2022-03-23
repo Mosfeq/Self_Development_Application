@@ -17,8 +17,8 @@ import java.util.*
 
 class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickListener {
 
-    private val habitsList = arrayListOf<HabitItem>()
-    private val adapter = HabitAdapter(habitsList, this)
+    val habitsList = arrayListOf<HabitItem>()
+    val adapter = HabitAdapter(habitsList, this)
     private lateinit var database: DatabaseReference
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -35,22 +35,18 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
         }
 
         btn_deleteHabit.setOnClickListener {
-            deleteHabitPage()
+            val habitToBeDeleted = et_enterHabitToDelete.text.toString()
+            if (habitToBeDeleted.isNotEmpty()){
+                deleteHabit(habitToBeDeleted)
+            }else{
+                Toast.makeText(context, "Please enter habit to be deleted", Toast.LENGTH_SHORT).show()
+            }
         }
 
-        btn_refresh.setOnClickListener {
-            habitsList.removeAt(0)
-            adapter.notifyItemRemoved(0)
-        }
     }
 
     private fun addHabitPage(){
         val action = HomeFragmentDirections.actionHomeFragmentToAddHabitsFragment()
-        findNavController().navigate(action)
-    }
-
-    private fun deleteHabitPage(){
-        val action = HomeFragmentDirections.actionHomeFragmentToDeleteHabitsFragment()
         findNavController().navigate(action)
     }
 
@@ -59,7 +55,7 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
 
         val sdf = SimpleDateFormat("dd/M/yyyy")
         val currentDate = sdf.format(Date())
-        val clickedHabit : HabitItem = habitsList[position]
+        val clickedHabit = habitsList[position]
         val nameOfHabit = clickedHabit.habitName
         val numberOfHabitClicks = clickedHabit.numberOfClicks
 
@@ -122,6 +118,18 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
         })
     }
 
+    private fun deleteHabit(deleteHabit: String){
+        database = FirebaseDatabase.getInstance("https://self-improvement-application-default-rtdb.europe-west1.firebasedatabase.app/").getReference("Habits")
+        database.child(deleteHabit).removeValue().addOnSuccessListener {
+            et_enterHabitToDelete.text.clear()
+            Toast.makeText(context, "Successfully Deleted", Toast.LENGTH_SHORT).show()
+        }.addOnFailureListener {
+            Toast.makeText(context, "Habit not Deleted", Toast.LENGTH_SHORT).show()
+        }
+        habitsList.removeAt(0)
+        adapter.notifyItemRemoved(0)
+    }
+
 //    private fun listGenerator(sizeOfList: Int): ArrayList<HabitItem>{
 //        val list = ArrayList<HabitItem>()
 //
@@ -131,5 +139,4 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
 //        }
 //        return list
 //    }
-
 }
