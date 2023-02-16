@@ -8,11 +8,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
-import kotlinx.android.synthetic.main.habit_item.*
 import kotlinx.android.synthetic.main.home_fragment.*
-import java.sql.Time
 import java.text.SimpleDateFormat
-import java.time.DateTimeException
 import java.util.*
 
 class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickListener {
@@ -129,14 +126,4 @@ class HomeFragment: Fragment(R.layout.home_fragment), HabitAdapter.onItemClickLi
         habitsList.removeAt(0)
         adapter.notifyItemRemoved(0)
     }
-
-//    private fun listGenerator(sizeOfList: Int): ArrayList<HabitItem>{
-//        val list = ArrayList<HabitItem>()
-//
-//        for (i in 0 until sizeOfList){
-//            val habitItem = HabitItem("Habit Name", "Goal: ", "Reason: ")
-//            list+= habitItem
-//        }
-//        return list
-//    }
 }

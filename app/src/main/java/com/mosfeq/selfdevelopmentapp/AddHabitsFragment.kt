@@ -1,15 +1,12 @@
 package com.mosfeq.selfdevelopmentapp
 
 import android.os.Bundle
-import android.text.Editable
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.database.*
 import kotlinx.android.synthetic.main.add_habits_fragment.*
-import kotlinx.android.synthetic.main.home_fragment.*
 
 open class AddHabitsFragment : Fragment(R.layout.add_habits_fragment) {
 
